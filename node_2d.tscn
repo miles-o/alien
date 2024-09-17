@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bdc7hq4ryv1yn"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="LineEdit" type="LineEdit" parent="."]
-offset_right = 1154.0
-offset_bottom = 652.0
-text = ">"

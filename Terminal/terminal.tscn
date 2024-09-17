@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://uf8s7l240q33"]
+
+[ext_resource type="Script" path="res://Terminal/terminal.gd" id="1_kg68k"]
+
+[node name="terminal" type="Node2D"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_kg68k")
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "output"
+editable = false
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+placeholder_text = "root"
+
+[connection signal="text_submitted" from="VBoxContainer/LineEdit" to="VBoxContainer" method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="VBoxContainer/LineEdit" to="VBoxContainer/LineEdit" method="_on_text_submitted"]
