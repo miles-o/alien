@@ -6,7 +6,7 @@ var currentNode = root
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	root.set_text(0, "root")
-	generate_tree("space_station")
+	generate_tree("ship")
 	$HBoxContainer/FileExplorer.text = currentNode.get_text(0) + "\n" + list_children(currentNode)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
