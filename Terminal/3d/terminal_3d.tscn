@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpagpwihqqk7g"]
+
+[ext_resource type="PackedScene" uid="uid://bju0l148n5kyg" path="res://art/terminal.glb" id="2_x70rj"]
+[ext_resource type="Script" path="res://Terminal/3d/terminal_body.gd" id="3_5k2us"]
+[ext_resource type="Script" path="res://Terminal/3d/terminal_3d.gd" id="3_c5aob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq1fv"]
+size = Vector3(1, 1.20435, 0.570801)
+
+[node name="Terminal3D" type="Node3D"]
+script = ExtResource("3_c5aob")
+
+[node name="terminal" parent="." instance=ExtResource("2_x70rj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="TerminalBody" type="StaticBody3D" parent="."]
+script = ExtResource("3_5k2us")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerminalBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343628, -0.0178223)
+shape = SubResource("BoxShape3D_aq1fv")
+
+[connection signal="input_event" from="TerminalBody" to="." method="_on_static_body_3d_input_event"]

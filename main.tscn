@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b153q0mlx58f3"]
+
+[ext_resource type="PackedScene" uid="uid://dwcnyprxioft" path="res://rooms/room.tscn" id="1_dnp4h"]
+[ext_resource type="PackedScene" uid="uid://boebt5s25tu8g" path="res://player/player.tscn" id="2_2so8h"]
+[ext_resource type="PackedScene" uid="uid://dpagpwihqqk7g" path="res://Terminal/3d/terminal_3d.tscn" id="3_jpxds"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_dnp4h")]
+
+[node name="Player" parent="." instance=ExtResource("2_2so8h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48138, 0)
+
+[node name="Terminal3D" parent="." instance=ExtResource("3_jpxds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549988, 3)
+
+[connection signal="close_terminal" from="Terminal3D" to="Player" method="_on_terminal_3d_close_terminal"]
+[connection signal="open_terminal" from="Terminal3D" to="Player" method="_on_terminal_3d_open_terminal"]

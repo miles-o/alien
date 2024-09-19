@@ -1,13 +1,14 @@
 extends VBoxContainer
-var tree = Tree.new()
-var root = tree.create_item()
-var currentNode = root
+@onready var tree = $HBoxContainer/Tree
+@onready var root = tree.create_item()
+@onready var currentNode = root
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	root.set_text(0, "root")
-	generate_tree("ship")
-	$HBoxContainer/FileExplorer.text = currentNode.get_text(0) + "\n" + list_children(currentNode)
+	generate_tree("space_station")
+	#$HBoxContainer/Tree.text = currentNode.get_text(0) + "\n" + list_children(currentNode)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -108,7 +109,6 @@ func change_directory(inputArray):
 		else:
 			$HBoxContainer/Output.text += "already at root\n"
 	var nodeTxt = currentNode.get_text(0)
-	$HBoxContainer/FileExplorer.text = currentNode.get_text(0) + "\n" + list_children(currentNode)
 
 func mkdir(inputArray):
 	if inputArray.size() > 1:
