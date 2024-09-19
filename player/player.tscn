@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_v1ktx"]
 [ext_resource type="PackedScene" uid="uid://uf8s7l240q33" path="res://Terminal/2d/terminal.tscn" id="2_re3iv"]
-[ext_resource type="PackedScene" uid="uid://d07b1kgtaakpy" path="res://art/character.gltf" id="3_80pvq"]
-[ext_resource type="Texture2D" uid="uid://dhbog7hg0lnie" path="res://art/crosshair.png" id="4_xw13w"]
+[ext_resource type="PackedScene" uid="uid://cl3nlb5it0u6r" path="res://art/characters/playercharacter_blockout.blend" id="3_gemov"]
+[ext_resource type="Texture2D" uid="uid://dhbog7hg0lnie" path="res://art/2d assets/crosshair.png" id="4_xw13w"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lrf5n"]
-size = Vector3(0.574947, 1.76857, 0.307739)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qma5e"]
+size = Vector3(1.80078, 3.41455, 1.82181)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_v1ktx")
@@ -14,21 +14,21 @@ terminal_scene = ExtResource("2_re3iv")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="Root" parent="Pivot" instance=ExtResource("3_80pvq")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+[node name="playercharacter_blockout" parent="Pivot" instance=ExtResource("3_gemov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79446, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00517082, 0.851173, 0.09552)
-shape = SubResource("BoxShape3D_lrf5n")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00488281, 1.6993, 0.00184631)
+shape = SubResource("BoxShape3D_qma5e")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77271, -1.14054)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60955, -0.0604659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1948, -0.600785)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -6.55671e-08, -1, 0, 1.5, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

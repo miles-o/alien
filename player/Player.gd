@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 var terminal_window
 const SPEED = 10.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6
 const mouse_sensitivity = 0.002
 const RAY_LENGTH = 1000.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -63,3 +63,7 @@ func _on_terminal_3d_close_terminal():
 		terminal_window.queue_free()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		$CanvasLayer/Crosshair.visible = true
+
+
+func _on_ship_climb_ladder(top_position):
+	position = top_position

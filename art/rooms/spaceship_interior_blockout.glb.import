@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr6w2yaudrl2g"
-path="res://.godot/imported/room.gltf-1aa2405df84dba7aac7fb793169f704a.scn"
+uid="uid://bike7p6njudol"
+path="res://.godot/imported/spaceship_interior_blockout.glb-193f25728b7cf91073e248c17dacd2e4.scn"
 
 [deps]
 
-source_file="res://art/room.gltf"
-dest_files=["res://.godot/imported/room.gltf-1aa2405df84dba7aac7fb793169f704a.scn"]
+source_file="res://art/rooms/spaceship_interior_blockout.glb"
+dest_files=["res://.godot/imported/spaceship_interior_blockout.glb-193f25728b7cf91073e248c17dacd2e4.scn"]
 
 [params]
 

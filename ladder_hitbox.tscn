@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bufbe04mqf0wd"]
+
+[ext_resource type="PackedScene" uid="uid://pnfl7sdsnp1p" path="res://rooms/ship.tscn" id="1_dmmud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xvchf"]
+size = Vector3(2.00989, 6.62207, 2.09204)
+
+[node name="ladder_hitbox" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45697, 2.81104, -0.203003)
+shape = SubResource("BoxShape3D_xvchf")
+
+[node name="ship" parent="." instance=ExtResource("1_dmmud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51367, 0, -1.24488)
+visible = false
