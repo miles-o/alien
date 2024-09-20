@@ -3,6 +3,13 @@ extends VBoxContainer
 @onready var root = tree.create_item()
 @onready var currentNode = root
 
+var awaiting_password = false
+var program_awaiting_password : String = ""
+var passwords : Dictionary = {
+	"eject_module": "admin",
+	"access_cameras": "password"
+}
+
 # ---- the boring stuff ---- #
 func _ready():
 	root.set_text(0, "root")
@@ -58,9 +65,8 @@ func _on_line_edit_text_submitted(new_text):
 	var input = new_text
 	var inputArray : Array = process_command(input)
 	
-	match inputArray[0]:
-		_:
-			$HBoxContainer/Output.text += "invalid input: " + input + "\n"
+	if awaiting_password:
+		check_password(inputArray)
 
 func process_command(command):
 	var inputArray : Array = []
@@ -116,11 +122,24 @@ func ship_cameras():
 	$HBoxContainer/Output.text += "Launching cameras\n"
 
 func access_cameras():
-	$HBoxContainer/Output.text += "Accessing cameras\n"
+	awaiting_password = true
+	program_awaiting_password = "access_cameras"
+	$HBoxContainer/Output.text += "Enter password\n"
 
 func eject_module():
-	$HBoxContainer/Output.text += "Ejecting module\n"
+	awaiting_password = true
+	program_awaiting_password = "eject_module"
+	$HBoxContainer/Output.text += "Enter password\n"
 
 func connect_module():
 	$HBoxContainer/Output.text += "Connecting module\n"
+
+func check_password(inputArray):
+	var password = passwords[program_awaiting_password]
+	if inputArray[0] == password:
+		$HBoxContainer/Output.text += "Correct!\nrunning "+program_awaiting_password+"\n"
+		awaiting_password = false
+		program_awaiting_password = ""
+	else:
+		$HBoxContainer/Output.text += "Password incorrect, try again\n"
 # -------------------------- #

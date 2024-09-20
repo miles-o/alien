@@ -5,7 +5,7 @@ var menu_scene : PackedScene = load("res://2d/main_menu/main_menu.tscn")
 var menu
 var terminal_window
 const SPEED = 10.0
-const JUMP_VELOCITY = 6
+const JUMP_VELOCITY = 7
 const mouse_sensitivity = 0.002
 const RAY_LENGTH = 1000.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.

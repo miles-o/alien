@@ -10,7 +10,7 @@ script = ExtResource("1_bcu3o")
 [node name="ship" parent="." instance=ExtResource("2_281fs")]
 
 [node name="Player" parent="." instance=ExtResource("3_jv6t5")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 16, 0, 0)
 
 [connection signal="climb_ladder" from="ship" to="Player" method="_on_ship_climb_ladder"]
 [connection signal="close_terminal" from="ship" to="Player" method="_on_close_terminal"]
