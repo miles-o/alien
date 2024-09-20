@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uf8s7l240q33"]
 
-[ext_resource type="Script" path="res://Terminal/2d/terminal.gd" id="1_i0ool"]
-[ext_resource type="Theme" uid="uid://btre2qo4eithv" path="res://Terminal/themes/new_theme.tres" id="2_ca4lo"]
+[ext_resource type="Script" path="res://2d/terminal/terminal.gd" id="1_i0ool"]
+[ext_resource type="Theme" uid="uid://btre2qo4eithv" path="res://themes/new_theme.tres" id="2_ca4lo"]
 
 [sub_resource type="Theme" id="Theme_tbyau"]
 
@@ -27,6 +27,8 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
+hide_root = true
+drop_mode_flags = 2
 
 [node name="Output" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -53,5 +55,6 @@ size_flags_stretch_ratio = 0.2
 theme = ExtResource("2_ca4lo")
 editable = false
 
+[connection signal="item_activated" from="VBoxContainer/HBoxContainer/Tree" to="VBoxContainer" method="_on_tree_item_activated"]
 [connection signal="text_submitted" from="VBoxContainer/LineEdit" to="VBoxContainer" method="_on_line_edit_text_submitted"]
 [connection signal="text_submitted" from="VBoxContainer/LineEdit" to="VBoxContainer/LineEdit" method="_on_text_submitted"]

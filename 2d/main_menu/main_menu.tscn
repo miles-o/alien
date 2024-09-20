@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw2ipr2bys3hb"]
+
+[ext_resource type="Script" path="res://2d/main_menu/main_menu.gd" id="1_g50m1"]
+[ext_resource type="PackedScene" uid="uid://ro7s3y0hs4jl" path="res://levels/level_scene.tscn" id="2_cthbi"]
+[ext_resource type="Theme" uid="uid://btre2qo4eithv" path="res://themes/new_theme.tres" id="3_10ob1"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_g50m1")
+level_scene = ExtResource("2_cthbi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0.372549, 0, 1)
+
+[node name="Start" type="Button" parent="CanvasLayer"]
+offset_left = 810.0
+offset_top = 490.0
+offset_right = 1110.0
+offset_bottom = 590.0
+theme = ExtResource("3_10ob1")
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+offset_left = 810.0
+offset_top = 650.0
+offset_right = 1110.0
+offset_bottom = 750.0
+theme = ExtResource("3_10ob1")
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 616.0
+offset_top = 302.0
+offset_right = 1309.0
+offset_bottom = 427.0
+theme = ExtResource("3_10ob1")
+theme_override_font_sizes/font_size = 91
+text = "ALIEN GAME !!!!!"
+
+[connection signal="pressed" from="CanvasLayer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

@@ -1,19 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b153q0mlx58f3"]
+[gd_scene load_steps=2 format=3 uid="uid://b153q0mlx58f3"]
 
-[ext_resource type="PackedScene" uid="uid://boebt5s25tu8g" path="res://player/player.tscn" id="2_2so8h"]
-[ext_resource type="PackedScene" uid="uid://dpagpwihqqk7g" path="res://Terminal/3d/terminal_3d.tscn" id="3_jpxds"]
-[ext_resource type="PackedScene" uid="uid://pnfl7sdsnp1p" path="res://rooms/ship.tscn" id="3_pww3p"]
+[ext_resource type="PackedScene" uid="uid://bw2ipr2bys3hb" path="res://2d/main_menu/main_menu.tscn" id="1_4ssix"]
 
 [node name="Main" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_2so8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.02673, 0.78329, 0)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Terminal3D" parent="." instance=ExtResource("3_jpxds")]
-transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -9.24222, 6.3717, 0.989572)
-
-[node name="ship" parent="." instance=ExtResource("3_pww3p")]
-
-[connection signal="close_terminal" from="Terminal3D" to="Player" method="_on_terminal_3d_close_terminal"]
-[connection signal="open_terminal" from="Terminal3D" to="Player" method="_on_terminal_3d_open_terminal"]
-[connection signal="climb_ladder" from="ship" to="Player" method="_on_ship_climb_ladder"]
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_4ssix")]

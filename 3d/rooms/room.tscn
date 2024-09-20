@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bikbei0g3lwg"]
+
+[ext_resource type="PackedScene" uid="uid://c4ojje3e64cgp" path="res://art/room.blend" id="1_tperq"]
+
+[node name="Room" type="Node3D"]
+
+[node name="room" parent="." instance=ExtResource("1_tperq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.487732, 0, -0.539307)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.891, 0)
+light_energy = 10.0
+omni_range = 37.4052

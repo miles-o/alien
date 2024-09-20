@@ -1,13 +1,15 @@
 extends CharacterBody3D
-@export var terminal_scene : PackedScene
+var terminal_scene : PackedScene = load("res://2d/terminal/terminal.tscn")
+var menu_scene : PackedScene = load("res://2d/main_menu/main_menu.tscn")
 
+var menu
 var terminal_window
 const SPEED = 10.0
 const JUMP_VELOCITY = 6
 const mouse_sensitivity = 0.002
 const RAY_LENGTH = 1000.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")*2
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -21,6 +23,7 @@ func _input(event):
 
 
 func _physics_process(delta):
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -47,23 +50,35 @@ func _physics_process(delta):
 		if is_instance_valid(object) && object.has_method("interact"):
 			object.interact()
 	
+	if Input.is_action_just_pressed("escape") && !is_instance_valid(terminal_window):
+		if !is_instance_valid(menu):
+			$CanvasLayer/Crosshair.visible = false
+			menu = menu_scene.instantiate()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			get_parent().get_parent().get_child(0).add_child(menu)
+		else:
+			free_menu()
 	move_and_slide()
 
 
 
-func _on_terminal_3d_open_terminal():
+func _on_open_terminal():
 	$CanvasLayer/Crosshair.visible = false
 	terminal_window = terminal_scene.instantiate()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	$CanvasLayer.add_child(terminal_window)
+	get_parent().get_parent().get_child(0).add_child(terminal_window)
 
 
-func _on_terminal_3d_close_terminal():
+func _on_close_terminal():
 	if is_instance_valid(terminal_window):
 		terminal_window.queue_free()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		$CanvasLayer/Crosshair.visible = true
 
+func free_menu():
+	menu.queue_free()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$CanvasLayer/Crosshair.visible = true
 
 func _on_ship_climb_ladder(top_position):
 	position = top_position

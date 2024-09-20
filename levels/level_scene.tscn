@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ro7s3y0hs4jl"]
+
+[ext_resource type="Script" path="res://levels/level_scene.gd" id="1_bcu3o"]
+[ext_resource type="PackedScene" uid="uid://pnfl7sdsnp1p" path="res://3d/rooms/ship/ship.tscn" id="2_281fs"]
+[ext_resource type="PackedScene" uid="uid://boebt5s25tu8g" path="res://player/player.tscn" id="3_jv6t5"]
+
+[node name="LevelScene" type="Node3D"]
+script = ExtResource("1_bcu3o")
+
+[node name="ship" parent="." instance=ExtResource("2_281fs")]
+
+[node name="Player" parent="." instance=ExtResource("3_jv6t5")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[connection signal="climb_ladder" from="ship" to="Player" method="_on_ship_climb_ladder"]
+[connection signal="close_terminal" from="ship" to="Player" method="_on_close_terminal"]
+[connection signal="open_terminal" from="ship" to="Player" method="_on_open_terminal"]

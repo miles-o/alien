@@ -1,3 +1,4 @@
+class_name Terminal
 extends Node3D
 
 
