@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bike7p6njudol"
-path="res://.godot/imported/spaceship_interior_blockout.glb-193f25728b7cf91073e248c17dacd2e4.scn"
+uid="uid://4pmgekc2vukw"
+path="res://.godot/imported/untitled.fbx-cf50848555e987ae5a609ac32b1c129c.scn"
 
 [deps]
 
-source_file="res://art/rooms/spaceship_interior_blockout.glb"
-dest_files=["res://.godot/imported/spaceship_interior_blockout.glb-193f25728b7cf91073e248c17dacd2e4.scn"]
+source_file="res://art/misc/untitled.fbx"
+dest_files=["res://.godot/imported/untitled.fbx-cf50848555e987ae5a609ac32b1c129c.scn"]
 
 [params]
 
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
