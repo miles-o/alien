@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bikbei0g3lwg"]
 
-[ext_resource type="PackedScene" uid="uid://c4ojje3e64cgp" path="res://art/room.blend" id="1_tperq"]
+[ext_resource type="PackedScene" uid="uid://dr6w2yaudrl2g" path="res://art/rooms/room.gltf" id="1_tperq"]
 
 [node name="Room" type="Node3D"]
 
