@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://pnfl7sdsnp1p"]
+[gd_scene load_steps=9 format=3 uid="uid://pnfl7sdsnp1p"]
 
 [ext_resource type="Script" path="res://3d/rooms/ship/ship.gd" id="1_2nfhs"]
 [ext_resource type="PackedScene" uid="uid://bgekfspttkhqb" path="res://art/spaceship_interior.blend" id="2_smrwf"]
 [ext_resource type="Script" path="res://3d/rooms/ship/ladder.gd" id="3_c2x1e"]
 [ext_resource type="Script" path="res://3d/rooms/ship/ShipTerminal.gd" id="4_qvqmb"]
+[ext_resource type="PackedScene" uid="uid://be61wjyh4o62l" path="res://art/misc/donut.blend" id="5_4x2po"]
+[ext_resource type="PackedScene" uid="uid://ot5rcymbkctq" path="res://art/misc/untitled.blend" id="6_frtbx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hx2i7"]
 size = Vector3(1.97742, 6.12219, 2.02759)
@@ -47,3 +49,9 @@ script = ExtResource("4_qvqmb")
 [node name="Hitbox" type="CollisionShape3D" parent="ShipTerminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0732, 6.55272, 1.1249)
 shape = SubResource("BoxShape3D_sc4fw")
+
+[node name="donut" parent="." instance=ExtResource("5_4x2po")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02982, 6.50879, -1.95474)
+
+[node name="untitled" parent="." instance=ExtResource("6_frtbx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.64206, 6.49615, -1.15782)
