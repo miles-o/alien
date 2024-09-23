@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ro7s3y0hs4jl"]
+[gd_scene load_steps=5 format=3 uid="uid://ro7s3y0hs4jl"]
 
 [ext_resource type="Script" path="res://levels/level_scene.gd" id="1_bcu3o"]
 [ext_resource type="PackedScene" uid="uid://pnfl7sdsnp1p" path="res://3d/rooms/ship/ship.tscn" id="2_281fs"]
 [ext_resource type="PackedScene" uid="uid://boebt5s25tu8g" path="res://player/player.tscn" id="3_jv6t5"]
+[ext_resource type="PackedScene" uid="uid://bwsb6v84xhuh3" path="res://art/rooms/module.blend" id="4_torrm"]
 
 [node name="LevelScene" type="Node3D"]
 script = ExtResource("1_bcu3o")
@@ -11,6 +12,22 @@ script = ExtResource("1_bcu3o")
 
 [node name="Player" parent="." instance=ExtResource("3_jv6t5")]
 transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 16, 0, 0)
+
+[node name="module" parent="." instance=ExtResource("4_torrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7126, 4, 13.6302)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00744629, 2.62677, -1.96136)
+light_energy = 6.545
+omni_range = 10.5331
+
+[node name="module2" parent="." instance=ExtResource("4_torrm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.9241, 3.9, -13.095)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="module2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00744629, 2.62677, -1.96136)
+light_energy = 6.545
+omni_range = 11.3628
 
 [connection signal="climb_ladder" from="ship" to="Player" method="_on_ship_climb_ladder"]
 [connection signal="close_terminal" from="ship" to="Player" method="_on_close_terminal"]
