@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://boebt5s25tu8g"]
 
-[ext_resource type="Script" path="res://player/Player.gd" id="1_v1ktx"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_v1ktx"]
 [ext_resource type="PackedScene" uid="uid://cl3nlb5it0u6r" path="res://art/characters/playercharacter_blockout.blend" id="3_gemov"]
 [ext_resource type="Texture2D" uid="uid://dhbog7hg0lnie" path="res://art/2d assets/crosshair.png" id="4_xw13w"]
 

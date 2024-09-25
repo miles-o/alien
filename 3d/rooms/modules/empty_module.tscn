@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://db4hg0i4lyi6m"]
+
+[ext_resource type="PackedScene" uid="uid://bsm31oww6vfvr" path="res://3d/rooms/module_components/module_doorway.tscn" id="1_ajj3e"]
+[ext_resource type="PackedScene" uid="uid://c6notcib0x0wu" path="res://3d/rooms/module_components/module_center.tscn" id="2_2q52e"]
+[ext_resource type="PackedScene" uid="uid://cwbng5lofogd0" path="res://3d/rooms/module_components/module_edge.tscn" id="3_bd70q"]
+
+[node name="ModuleEmpty" type="Node3D"]
+
+[node name="ModuleMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="ModuleCenter" parent="ModuleMarker" instance=ExtResource("2_2q52e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Doorway" parent="ModuleMarker" instance=ExtResource("1_ajj3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="EdgeRight" parent="ModuleMarker" instance=ExtResource("3_bd70q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)
+
+[node name="EdgeBack" parent="ModuleMarker" instance=ExtResource("3_bd70q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, 0)
+
+[node name="EdgeLeft" parent="ModuleMarker" instance=ExtResource("3_bd70q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ModuleMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30264, 0, 0)
+omni_range = 16.3488

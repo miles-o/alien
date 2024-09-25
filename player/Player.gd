@@ -2,6 +2,7 @@ extends CharacterBody3D
 var terminal_scene : PackedScene = load("res://2d/terminal/terminal.tscn")
 var menu_scene : PackedScene = load("res://2d/main_menu/main_menu.tscn")
 
+var main_node_canvas
 var menu
 var terminal_window
 const SPEED = 10.0
@@ -13,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")*2
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	main_node_canvas = get_parent().get_parent().get_child(0)
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -55,7 +57,7 @@ func _physics_process(delta):
 			$CanvasLayer/Crosshair.visible = false
 			menu = menu_scene.instantiate()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			get_parent().get_parent().get_child(0).add_child(menu)
+			main_node_canvas.add_child(menu)
 		else:
 			free_menu()
 	move_and_slide()
@@ -64,9 +66,9 @@ func _physics_process(delta):
 
 func _on_open_terminal():
 	$CanvasLayer/Crosshair.visible = false
-	terminal_window = terminal_scene.instantiate()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_parent().get_parent().get_child(0).add_child(terminal_window)
+	terminal_window = terminal_scene.instantiate()
+	main_node_canvas.add_child(terminal_window)
 
 
 func _on_close_terminal():

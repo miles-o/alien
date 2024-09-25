@@ -14,5 +14,5 @@ func interact():
 	var ray_cast = $TopOfLadder
 	ray_cast.enabled = true
 	var top_position = ray_cast.get_collision_point()
-	var parent = get_parent()
-	parent.climb_ladder.emit(top_position)
+	var ship_node = get_parent().get_parent()
+	ship_node.climb_ladder.emit(top_position)

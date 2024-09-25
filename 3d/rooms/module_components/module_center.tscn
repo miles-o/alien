@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=4 uid="uid://c6notcib0x0wu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptfux"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ocum8"]
+_surfaces = [{
+"aabb": AABB(-2.66667, -4, -2.66667, 5.33333, 8, 5.33333),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("BAAHAAUABAAGAAcAAAADAAEAAAACAAMA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD///////8AAAAA//8AAAAAAAD/////AAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b8522"]
+resource_name = "module_Cube_020"
+_surfaces = [{
+"aabb": AABB(-2.66667, -4, -2.66667, 5.33333, 8, 5.33333),
+"attribute_data": PackedByteArray("VLWqalS1VVWpyqpqqcpVVVU1qmpVNVVVqkqqaqpKVVU="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("BAAHAAUABAAGAAcAAAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_ptfux"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD///////8AAAAA//8AAAAAAAD/////AAAAAAAAAAD/PwAAAAD///8///8AAAAA/z///wAA////P/9//z//f/8//3//P/9//z////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ocum8")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cxfr4"]
+data = PackedVector3Array(-2.66667, -4, -2.66667, 2.66667, -4, 2.66667, -2.66667, -4, 2.66667, -2.66667, -4, -2.66667, 2.66667, -4, -2.66667, 2.66667, -4, 2.66667, 2.66667, 4, -2.66667, -2.66667, 4, 2.66667, 2.66667, 4, 2.66667, 2.66667, 4, -2.66667, -2.66667, 4, -2.66667, -2.66667, 4, 2.66667)
+
+[node name="ModuleCenter" type="Node3D"]
+
+[node name="module_center" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_b8522")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="module_center"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="module_center/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_cxfr4")

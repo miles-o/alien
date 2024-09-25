@@ -2,7 +2,10 @@ extends VBoxContainer
 @onready var tree = $HBoxContainer/Tree
 @onready var root = tree.create_item()
 @onready var currentNode = root
-
+var ship_interior_node
+var selected_module
+var selected_side
+var module_awaiting_input = false
 var awaiting_password = false
 var program_awaiting_password : String = ""
 var passwords : Dictionary = {
@@ -13,8 +16,9 @@ var passwords : Dictionary = {
 # ---- the boring stuff ---- #
 func _ready():
 	root.set_text(0, "root")
-	generate_tree("space_station")
+	generate_tree("ship")
 	tree.set_selected(root, 0)
+	ship_interior_node = get_parent().get_parent().get_parent().get_child(1).get_child(0).get_child(0)
 
 func _process(_delta):
 	pass
@@ -67,6 +71,8 @@ func _on_line_edit_text_submitted(new_text):
 	
 	if awaiting_password:
 		check_password(inputArray)
+	elif module_awaiting_input:
+		connect_module(inputArray)
 
 func process_command(command):
 	var inputArray : Array = []
@@ -99,7 +105,7 @@ func _on_tree_item_activated():
 		"ship_cameras.exe":
 			ship_cameras()
 		"connect_module.exe":
-			connect_module()
+			connect_module(null)
 		"eject_module.exe":
 			eject_module()
 		"list_modules.exe":
@@ -131,8 +137,79 @@ func eject_module():
 	program_awaiting_password = "eject_module"
 	$HBoxContainer/Output.text += "Enter password\n"
 
-func connect_module():
-	$HBoxContainer/Output.text += "Connecting module\n"
+func connect_module(inputArray):
+	if module_awaiting_input == false:
+		$HBoxContainer/Output.text += "Available modules:\n"
+		var ship_interior_node = get_parent().get_parent().get_parent().get_child(1).get_child(0).get_child(0)
+		var i = 0
+		var current_node
+		var node_name : String
+		while is_instance_valid(ship_interior_node.get_child(i)):
+			current_node = ship_interior_node.get_child(i)
+			node_name = current_node.get_name()
+			if node_name.substr(0, 6) == "Module":
+				$HBoxContainer/Output.text += node_name + "\n"
+			i += 1
+		module_awaiting_input = true
+	elif !is_instance_valid(selected_module):
+		var i = 0
+		var current_node
+		var module_node
+		var node_name : String
+		while is_instance_valid(ship_interior_node.get_child(i)):
+			current_node = ship_interior_node.get_child(i)
+			node_name = current_node.get_name()
+			if node_name.to_lower() == inputArray[0]:
+				selected_module = current_node
+				$HBoxContainer/Output.text += node_name + " Selected\n"
+				break
+			i += 1
+		i = 0
+		if !is_instance_valid(selected_module):
+			$HBoxContainer/Output.text += "Invalid module\n"
+			return
+		$HBoxContainer/Output.text += "Select side\nAvailable sides:\n"
+		while is_instance_valid(selected_module.get_child(0).get_child(i)):
+			current_node = selected_module.get_child(0).get_child(i)
+			node_name = current_node.get_name()
+			if node_name.substr(0, 4) == "Edge":
+				$HBoxContainer/Output.text += node_name.substr(4) + "\n"
+			i += 1
+	else:
+		var i = 0
+		var current_node
+		var node_name : String
+		while is_instance_valid(selected_module.get_child(0).get_child(i)):
+			current_node = selected_module.get_child(0).get_child(i)
+			node_name = current_node.get_name()
+			if node_name.substr(4).to_lower() == inputArray[0]:
+				selected_side = current_node
+				$HBoxContainer/Output.text += node_name +  " Selected\n"
+				break
+			i += 1
+		if !is_instance_valid(selected_side):
+			$HBoxContainer/Output.text += "Invalid side name\n"
+			return
+		# replace edge
+		
+		var doorway_scene = load("res://3d/rooms/module_components/module_doorway.tscn")
+		var doorway = doorway_scene.instantiate()
+		doorway.position = selected_side.position
+		doorway.rotation = selected_side.rotation
+		selected_module.get_child(0).add_child(doorway)
+		selected_side.queue_free()
+		
+		var new_module_scene = load("res://3d/rooms/modules/empty_module.tscn")
+		var new_module = new_module_scene.instantiate()
+		var module_marker = new_module.get_child(0)
+		var doorway_marker = doorway.get_child(1)
+		
+		# not entirely sure why this maths works but it does dont fuck with it
+		new_module.position = doorway_marker.global_position + (doorway_marker.global_position - selected_module.global_position)
+		new_module.rotation = selected_module.global_rotation * 2 + doorway_marker.global_rotation
+		
+		ship_interior_node.add_child(new_module)
+		module_awaiting_input = false
 
 func check_password(inputArray):
 	var password = passwords[program_awaiting_password]
