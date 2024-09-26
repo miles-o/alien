@@ -11,9 +11,12 @@ const mouse_sensitivity = 0.002
 const RAY_LENGTH = 1000.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")*2
+var canvas
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	canvas = get_parent().get_parent().get_child(0)
 	main_node_canvas = get_parent().get_parent().get_child(0)
 
 func _input(event):
@@ -25,7 +28,6 @@ func _input(event):
 
 
 func _physics_process(delta):
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -46,20 +48,24 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	if Input.is_action_just_pressed("interact"):
-		var ray_cast = $Camera3D/RayCast3D
-		ray_cast.enabled = true
-		var object = ray_cast.get_collider()
-		if is_instance_valid(object) && object.has_method("interact"):
-			object.interact()
-	
-	if Input.is_action_just_pressed("escape") && !is_instance_valid(terminal_window):
-		if !is_instance_valid(menu):
+		if !is_instance_valid(canvas.get_child(0)):
+			var ray_cast = $Camera3D/RayCast3D
+			ray_cast.enabled = true
+			var object = ray_cast.get_collider()
+			if is_instance_valid(object) && object.has_method("interact"):
+				object.interact()
+			
+	if Input.is_action_just_pressed("escape"):
+		if !is_instance_valid(main_node_canvas.get_child(0)):
 			$CanvasLayer/Crosshair.visible = false
 			menu = menu_scene.instantiate()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			main_node_canvas.add_child(menu)
 		else:
-			free_menu()
+			for child in main_node_canvas.get_children():
+				child.queue_free()
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			$CanvasLayer/Crosshair.visible = true
 	move_and_slide()
 
 
@@ -69,18 +75,6 @@ func _on_open_terminal():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	terminal_window = terminal_scene.instantiate()
 	main_node_canvas.add_child(terminal_window)
-
-
-func _on_close_terminal():
-	if is_instance_valid(terminal_window):
-		terminal_window.queue_free()
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		$CanvasLayer/Crosshair.visible = true
-
-func free_menu():
-	menu.queue_free()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$CanvasLayer/Crosshair.visible = true
 
 func _on_ship_climb_ladder(top_position):
 	position = top_position

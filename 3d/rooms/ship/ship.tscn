@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://pnfl7sdsnp1p"]
+[gd_scene load_steps=9 format=3 uid="uid://pnfl7sdsnp1p"]
 
 [ext_resource type="Script" path="res://3d/rooms/ship/ship.gd" id="1_2nfhs"]
 [ext_resource type="PackedScene" uid="uid://dhus34d5ggjkb" path="res://art/rooms/spaceship interior .blend" id="2_np02s"]
 [ext_resource type="Script" path="res://3d/rooms/ship/ladder.gd" id="3_c2x1e"]
 [ext_resource type="Script" path="res://3d/rooms/ship/ship_terminal.gd" id="4_qvqmb"]
 [ext_resource type="PackedScene" uid="uid://be61wjyh4o62l" path="res://art/misc/donut.blend" id="5_4x2po"]
-[ext_resource type="PackedScene" uid="uid://db4hg0i4lyi6m" path="res://3d/rooms/modules/empty_module.tscn" id="5_80k8j"]
 [ext_resource type="PackedScene" uid="uid://ot5rcymbkctq" path="res://art/misc/untitled.blend" id="6_frtbx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hx2i7"]
@@ -37,9 +36,6 @@ script = ExtResource("4_qvqmb")
 [node name="Hitbox" type="CollisionShape3D" parent="SpaceshipInterior/TerminalStaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0732, 6.55272, 1.1249)
 shape = SubResource("BoxShape3D_sc4fw")
-
-[node name="ModuleRight" parent="SpaceshipInterior" instance=ExtResource("5_80k8j")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 4, -13)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13026, 9.60255, 0)

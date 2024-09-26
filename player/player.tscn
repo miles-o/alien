@@ -1,23 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://boebt5s25tu8g"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v1ktx"]
-[ext_resource type="PackedScene" uid="uid://cl3nlb5it0u6r" path="res://art/characters/playercharacter_blockout.blend" id="3_gemov"]
+[ext_resource type="PackedScene" uid="uid://p5w2e2lw37b3" path="res://art/characters/SpaceManTest.fbx" id="2_x7f00"]
 [ext_resource type="Texture2D" uid="uid://dhbog7hg0lnie" path="res://art/2d assets/crosshair.png" id="4_xw13w"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qma5e"]
-size = Vector3(1.80078, 3.41455, 1.82181)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cyc3i"]
+radius = 0.697159
+height = 3.64563
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_v1ktx")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="playercharacter_blockout" parent="Pivot" instance=ExtResource("3_gemov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79446, 0)
+[node name="SpaceManTest" parent="Pivot" instance=ExtResource("2_x7f00")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00488281, 1.6993, 0.00184631)
-shape = SubResource("BoxShape3D_qma5e")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00488281, 1.81653, 0.00184631)
+shape = SubResource("CapsuleShape3D_cyc3i")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77271, -1.14054)
