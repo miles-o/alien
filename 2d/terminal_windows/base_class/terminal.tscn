@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://uf8s7l240q33"]
 
-[ext_resource type="Script" path="res://2d/terminal/terminal.gd" id="1_i0ool"]
+[ext_resource type="Script" path="res://2d/terminal_windows/base_class/terminal.gd" id="1_i0ool"]
 [ext_resource type="Theme" uid="uid://btre2qo4eithv" path="res://themes/new_theme.tres" id="2_ca4lo"]
 
 [sub_resource type="Theme" id="Theme_tbyau"]

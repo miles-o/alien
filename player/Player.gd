@@ -1,5 +1,4 @@
 extends CharacterBody3D
-var terminal_scene : PackedScene = load("res://2d/terminal/terminal.tscn")
 var menu_scene : PackedScene = load("res://2d/main_menu/main_menu.tscn")
 
 var main_node_canvas
@@ -67,14 +66,6 @@ func _physics_process(delta):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			$CanvasLayer/Crosshair.visible = true
 	move_and_slide()
-
-
-
-func _on_open_terminal():
-	$CanvasLayer/Crosshair.visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	terminal_window = terminal_scene.instantiate()
-	main_node_canvas.add_child(terminal_window)
 
 func _on_ship_climb_ladder(top_position):
 	position = top_position
