@@ -24,8 +24,6 @@ func _input(event):
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
-
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -66,6 +64,3 @@ func _physics_process(delta):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			$CanvasLayer/Crosshair.visible = true
 	move_and_slide()
-
-func _on_ship_climb_ladder(top_position):
-	position = top_position

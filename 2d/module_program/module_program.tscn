@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djpdn3rtpkpyk"]
+[gd_scene load_steps=5 format=3 uid="uid://djpdn3rtpkpyk"]
 
 [ext_resource type="Script" path="res://2d/module_program/module_program.gd" id="1_7p8ie"]
 [ext_resource type="Texture2D" uid="uid://ii5in3nsdewn" path="res://2d/module_program/ship.png" id="1_eq45r"]
-[ext_resource type="PackedScene" uid="uid://cpcq5vpf5yntm" path="res://2d/module_program/module_button_cluster.tscn" id="2_6dpih"]
+[ext_resource type="PackedScene" uid="uid://cpcq5vpf5yntm" path="res://2d/module_program/button_cluster/module_button_cluster.tscn" id="2_6dpih"]
+[ext_resource type="Theme" uid="uid://d2dl4glva4ak8" path="res://2d/module_program/themes/default_theme.tres" id="4_hb75y"]
 
 [node name="ModuleProgram" type="Node2D" groups=["module_program"]]
 script = ExtResource("1_7p8ie")
@@ -52,3 +53,19 @@ size_flags_horizontal = 3
 [node name="ModuleButtonClusterRight" parent="Control/HBoxContainer" instance=ExtResource("2_6dpih")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="AvailableLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 76.0
+offset_right = 408.0
+offset_bottom = 131.0
+theme = ExtResource("4_hb75y")
+text = "Modules Available: "
+
+[node name="Counter" type="Label" parent="Control/AvailableLabel"]
+layout_mode = 0
+offset_left = 369.0
+offset_right = 409.0
+offset_bottom = 55.0
+theme = ExtResource("4_hb75y")

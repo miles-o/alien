@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2atxgnenkwpc"]
 
-[ext_resource type="PackedScene" uid="uid://bwsb6v84xhuh3" path="res://art/rooms/module.blend" id="1_a4s2p"]
+[ext_resource type="PackedScene" uid="uid://bwsb6v84xhuh3" path="res://assets/3d_assets/rooms/module.blend" id="1_a4s2p"]
 
 [sub_resource type="GDScript" id="GDScript_xsxtp"]
 script/source = "class_name Module

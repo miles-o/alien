@@ -1,6 +1,7 @@
 class_name Module
 extends Node3D
 var module_coordinates : Array
+var type: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

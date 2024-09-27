@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://d8xbnjbqukx3"]
+
+[ext_resource type="Script" path="res://2d/ui_components/warning_button.gd" id="1_i64q6"]
+
+[node name="Warning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_right = 558.0
+offset_bottom = 100.0
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 549.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 40
+text = "NO MODULES AVAILABLE!!!!!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 60.0
+offset_right = 299.0
+offset_bottom = 91.0
+text = "ok"
+script = ExtResource("1_i64q6")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

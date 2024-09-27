@@ -3,7 +3,7 @@ extends TerminalWindow
 # DONT FORGET TO LINK CORRECT SCRIPT TO SCENE
 
 # ---- inherited functions that must be defined ---- #
-func set_node_variables():
+func set_variables():
 	canvas_layer = get_parent().get_parent() 
 	passwords = {
 		"eject_module": "admin",

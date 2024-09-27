@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d2dl4glva4ak8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_155qs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym2l0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omkvw"]
+bg_color = Color(0.288518, 0.288518, 0.288518, 1)
+
+[resource]
+default_font_size = 16
+Button/styles/focus = SubResource("StyleBoxFlat_155qs")
+Button/styles/hover = SubResource("StyleBoxFlat_ym2l0")
+Button/styles/normal = SubResource("StyleBoxFlat_omkvw")
+Label/font_sizes/font_size = 40

@@ -81,7 +81,7 @@ func run_program(program_name):
 			print("run_program() not defined. Please define function in child class")
 
 func set_variables():
-	print("set_node_variables() not defined. Please define function in child class")
+	print("set_variables() not defined. Please define function in child class")
 
 func generate_tree():
 	print("generate_tree() not defined. Please define function in child class")

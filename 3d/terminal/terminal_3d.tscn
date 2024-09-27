@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpagpwihqqk7g"]
+[gd_scene load_steps=5 format=3 uid="uid://dpagpwihqqk7g"]
 
 [ext_resource type="Script" path="res://3d/terminal/terminal_body.gd" id="3_5k2us"]
 [ext_resource type="Script" path="res://3d/terminal/terminal_3d.gd" id="3_c5aob"]
+[ext_resource type="PackedScene" uid="uid://dgq6jkdil60mp" path="res://assets/3d_assets/rooms/interior_terminal.blend" id="3_ou4jw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aq1fv"]
-size = Vector3(1, 1.20435, 0.570801)
+size = Vector3(0.671387, 0.410301, 1.02591)
 
 [node name="Terminal3D" type="Node3D"]
 script = ExtResource("3_c5aob")
@@ -13,7 +14,9 @@ script = ExtResource("3_c5aob")
 script = ExtResource("3_5k2us")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerminalBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343628, -0.0178223)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0183105, 1.48769, -0.00529483)
 shape = SubResource("BoxShape3D_aq1fv")
+
+[node name="interior_terminal" parent="." instance=ExtResource("3_ou4jw")]
 
 [connection signal="input_event" from="TerminalBody" to="." method="_on_static_body_3d_input_event"]

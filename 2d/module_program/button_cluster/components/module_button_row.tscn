@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkusb31qyg62j"]
+
+[ext_resource type="PackedScene" uid="uid://b8qg65fykbc1t" path="res://2d/module_program/button_cluster/components/module_button.tscn" id="1_rmv54"]
+
+[node name="ModuleButtonRow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(450, 90)
+layout_mode = 0
+offset_right = 466.0
+offset_bottom = 90.0
+
+[node name="ModuleButton" parent="HBoxContainer" instance=ExtResource("1_rmv54")]
+layout_mode = 2
+
+[node name="ModuleButton2" parent="HBoxContainer" instance=ExtResource("1_rmv54")]
+layout_mode = 2
+
+[node name="ModuleButton3" parent="HBoxContainer" instance=ExtResource("1_rmv54")]
+layout_mode = 2
+
+[node name="ModuleButton4" parent="HBoxContainer" instance=ExtResource("1_rmv54")]
+layout_mode = 2
+
+[node name="ModuleButton5" parent="HBoxContainer" instance=ExtResource("1_rmv54")]
+layout_mode = 2

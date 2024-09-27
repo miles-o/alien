@@ -1,6 +1,4 @@
 extends Node3D
-signal open_terminal
-signal close_terminal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
