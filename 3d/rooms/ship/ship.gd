@@ -12,7 +12,7 @@ func _ready():
 	module_right.position.x = 16
 	module_right.position.y = 4
 	module_right.position.z = -13
-	module_right.type = "Default"
+	module_right.type = "default"
 	$SpaceshipInterior.add_child(module_right)
 	
 	var edge_right = module_right.get_child(0).get_node("EdgeLeft")
@@ -27,7 +27,7 @@ func _ready():
 	module_left.position.x = 16
 	module_left.position.y = 4
 	module_left.position.z = 13
-	module_left.type = "Default"
+	module_left.type = "default"
 	$SpaceshipInterior.add_child(module_left)
 	
 	var edge_left = module_left.get_child(0).get_node("EdgeRight")

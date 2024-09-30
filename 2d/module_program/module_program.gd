@@ -83,6 +83,7 @@ func create_modules():
 		var row = module.module_coordinates[0]
 		var column = module.module_coordinates[1]
 		var side = module.module_coordinates[2]
+		var type = module.type
 		var cluster
 		if side == 0:
 			cluster = left_cluster
@@ -93,9 +94,13 @@ func create_modules():
 			return
 		var button_row = cluster.get_child(0).get_child(row)
 		var button: Button = button_row.get_child(0).get_child(column).get_child(0)
-		button.theme = load("res://2d/module_program/themes/module_button.tres")
+		print(type)
+		if type == "fancy":
+			button.theme = load("res://2d/module_program/themes/fancy_button.tres")
+		elif type == "default": 
+			button.theme = load("res://2d/module_program/themes/module_button.tres")
+		button.type = type
 		button.disabled = true
-		button.type = "taken"
 
 func button_pressed(temp_coordinates):
 	if len(Global.available_modules) > 0:
@@ -127,7 +132,6 @@ func load_type_selector():
 func add_module(type):
 	var type_selector = get_node("Control").get_child(-1)
 	type_selector.queue_free()
-	
 	var row = coordinates[0]
 	var column = coordinates[1]
 	var side = coordinates[2]
@@ -255,6 +259,6 @@ func add_module(type):
 			Global.available_modules.remove_at(i)
 			break
 		i += 1
-	
+		
 	ship_interior_node.add_child(new_module)
 	create_modules()

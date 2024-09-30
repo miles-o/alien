@@ -1,10 +1,10 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d0swqjf78hd3i"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://djj8mkhc71jb1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcyot"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkwsd"]
-bg_color = Color(0, 1, 0, 1)
+bg_color = Color(1, 0, 0, 1)
 
 [resource]
 Button/styles/disabled = SubResource("StyleBoxFlat_mcyot")
